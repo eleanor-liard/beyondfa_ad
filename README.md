@@ -1,21 +1,18 @@
-# Beyond FA axial diffusivity
+# Beyond FA: axial diffusivity
 
-FA (Fractional Anisotropy) is a scalar value between 0 and 1 that quantifies how directional water diffusion is within a voxel in diffusion MRI, especially in white matter.
+### **AD (Axial Diffusivity)**
 
-FA ≈ 1: Water diffuses mostly in one direction
-
-FA ≈ 0: Water diffuses equally in all directions
-
- **FA** is calculated from the **eigenvalues** $\lambda_1 \geq \lambda_2 \geq \lambda_3$ of the diffusion **tensor**.  
-The eigenvectors give the directions in which the ellipsoid has major axes, and the corresponding eigenvalues give the magnitude of the peak in each eigenvector direction.
+AD corresponds to the **principal eigenvalue**:
 
 $$
-\text{FA} = \sqrt{ \frac{3}{2} \cdot \frac{ (\lambda_1 - \hat{\lambda})^2 + (\lambda_2 - \hat{\lambda})^2 + (\lambda_3 - \hat{\lambda})^2 }{ \lambda_1^2 + \lambda_2^2 + \lambda_3^2 } }
+\text{AD} = \lambda_1
 $$
 
-with $\hat{\lambda} = \frac{\lambda_1 + \lambda_2 + \lambda_3}{3}$ being the mean value of the eigenvalues.
+It captures diffusion **along the primary fiber direction** and is used as a marker for **axonal integrity**.
 
+* **Decreased AD** may indicate **axonal injury**, for example after trauma or in neurodegenerative conditions.
 
+## Building the Docker
 To build this Docker container, clone the repository and run the following command in the root directory:
 
 ```bash
@@ -35,8 +32,8 @@ To run this Docker:
 ```bash
 #!/bin/bash
 
-input_dir="/home-local/liarde/Beyond_FA/beyond_fa_microstruct_ad/Inputs"
-output_dir="/home-local/liarde/Beyond_FA/beyond_fa_microstruct_ad/Outputs"
+input_dir=".../input_data"
+output_dir=".../output_data"
 DOCKER_NOOP_VOLUME="beyondfa_da3-volume"
 
 # Ensure output directory exists
