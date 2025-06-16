@@ -1,5 +1,20 @@
 # Beyond FA axial diffusivity
 
+FA (Fractional Anisotropy) is a scalar value between 0 and 1 that quantifies how directional water diffusion is within a voxel in diffusion MRI, especially in white matter.
+
+FA ≈ 1: Water diffuses mostly in one direction
+
+FA ≈ 0: Water diffuses equally in all directions
+
+ **FA** is calculated from the **eigenvalues** $\lambda_1 \geq \lambda_2 \geq \lambda_3$ of the diffusion **tensor**.  
+The eigenvectors give the directions in which the ellipsoid has major axes, and the corresponding eigenvalues give the magnitude of the peak in each eigenvector direction.
+
+$$
+\text{FA} = \sqrt{ \frac{3}{2} \cdot \frac{ (\lambda_1 - \hat{\lambda})^2 + (\lambda_2 - \hat{\lambda})^2 + (\lambda_3 - \hat{\lambda})^2 }{ \lambda_1^2 + \lambda_2^2 + \lambda_3^2 } }
+$$
+
+with $\hat{\lambda} = \frac{\lambda_1 + \lambda_2 + \lambda_3}{3}$ being the mean value of the eigenvalues.
+
 
 To build this Docker container, clone the repository and run the following command in the root directory:
 
@@ -47,5 +62,4 @@ sudo docker run \
 sudo chmod -R 777 "$output_dir"
 
 ```
-# beyond_fa_microstruct_ad
-# beyond_fa_microstruct_ad
+
